@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ML Model with Pyodide</title>
+    <!-- Load Pyodide -->
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.27.2/full/pyodide.js"></script>
+  </head>
+  <body>
+    <div id="output"></div>
+
+    <script>
+      async function loadAndRunModel() {
+        try {
+          // Initialize Pyodide
+          let pyodide = await loadPyodide();
+
+          // Install required packages
+          await pyodide.loadPackage(["numpy", "scikit-learn"]);
+
+          // Your Python ML code
+          const pythonCode = `
+            import numpy as np
+            from sklearn.linear_model import LogisticRegression
+            
+            # Your ML model code here
+            X = np.array([[1, 2], [3, 4], [5, 6]])
+            y = np.array([0, 1, 0])
+            
+            model = LogisticRegression()
+            model.fit(X, y)
+            
+            # Make predictions
+            prediction = model.predict([[2, 3]])
+            print(f"Prediction: {prediction}")
+          `;
+
+          // Run the Python code
+          let result = await pyodide.runPythonAsync(pythonCode);
+          document.getElementById("output").textContent = result;
+        } catch (error) {
+          console.error("Error:", error);
+          document.getElementById("output").textContent = "Error: " + error.message;
+        }
+      }
+
+      // Run when page loads
+      loadAndRunModel();
+    </script>
+  </body>
+</html>
