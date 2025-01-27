@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wine Recommender</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="hero">
+        <div class="container">
+            <h1>Discover Your Perfect Wine</h1>
+            <p>Answer a few questions and let us recommend the best wines for you.</p>
+        </div>
+    </header>
+    <section class="questionnaire">
+        <div class="container">
+            <h2>Your Wine Preferences</h2>
+            <form id="preferencesForm">
+            </form>
+        </div>
+    </section>
+    <section class="wine-selection">
+        <div class="container">
+            <h2>Choose Wines You Like</h2>
+            <div class="wine-grid" id="wineGrid">
+            </div>
+            <button id="getRecommendations">Get Recommendations</button>
+        </div>
+    </section>
+
+    <section class="recommendations">
+        <div class="container">
+            <h2>Your Recommendations</h2>
+            <div class="recommendation-grid" id="recommendationGrid">
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
